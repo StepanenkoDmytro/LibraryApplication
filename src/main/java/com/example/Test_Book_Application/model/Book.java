@@ -3,6 +3,8 @@ package com.example.Test_Book_Application.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "books")
 @Entity
@@ -22,4 +24,17 @@ public class Book {
     cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.REMOVE})
     @JoinColumn(name = "author_id")
     private Author author;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "book")
+    private List<Image> images;
+
+    public void addImageToBook(Image image){
+        if(images == null){
+            images = new ArrayList<>();
+        }
+        images.add(image);
+        image.setBook(this);
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.Test_Book_Application.service.impl;
 
 import com.example.Test_Book_Application.exception.AuthorFetchException;
-import com.example.Test_Book_Application.exception.BookFetchException;
 import com.example.Test_Book_Application.model.Author;
 import com.example.Test_Book_Application.repository.AuthorRepository;
 import com.example.Test_Book_Application.service.AuthorService;

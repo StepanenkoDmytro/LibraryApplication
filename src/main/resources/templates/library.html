@@ -17,9 +17,12 @@
         </form>
     </div>
 
-    <div th:each="el : ${allBooks}" class="alert alert-info mt-2">
-        <h5 th:text="${el.title}"/>
-        <h6 th:text="'Author: ' + ${el.author.getName} +  ' Year: ' + ${el.year}"/>
+    <div th:each="book : ${allBooks}" class="alert alert-info mt-2">
+        <h5 th:text="${book.title}"/>
+        <h6 th:text="'Author: ' + ${book.author.getName} +  ' Year: ' + ${book.year}"/>
+        <div th:each="image : ${book.images}">
+            <img th:src="'/images/' + ${image.id}" height="150px"/>
+        </div>
     </div>
 
 </div>

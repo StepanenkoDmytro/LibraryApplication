@@ -7,6 +7,8 @@ import com.example.Test_Book_Application.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository authorRepository;
@@ -24,8 +26,8 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author getAuthorByName(String name) {
-        return authorRepository.findAuthorByName(name).orElseThrow(() ->
-                new AuthorFetchException(String.format("Author with name = %s not found", name)));
+    public Optional<Author> getAuthorByName(String name) {
+        return authorRepository.findAuthorByName(name);
+//                .orElseThrow(() ->new AuthorFetchException(String.format("Author with name = %s not found", name)));
     }
 }

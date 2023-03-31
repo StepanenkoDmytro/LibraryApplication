@@ -2,6 +2,7 @@ package com.example.Test_Book_Application.controller;
 
 import com.example.Test_Book_Application.model.Author;
 import com.example.Test_Book_Application.model.Book;
+import com.example.Test_Book_Application.repository.AuthorRepository;
 import com.example.Test_Book_Application.service.AuthorService;
 import com.example.Test_Book_Application.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,14 @@ public class BookController {
     private final BookService bookService;
 
     private final AuthorService authorService;
+    private final AuthorRepository authorRepository;
 
     @Autowired
-    public BookController(BookService bookService, AuthorService authorService) {
+    public BookController(BookService bookService, AuthorService authorService,
+                          AuthorRepository authorRepository) {
         this.bookService = bookService;
         this.authorService = authorService;
+        this.authorRepository = authorRepository;
     }
 
     @GetMapping("")
@@ -35,7 +39,7 @@ public class BookController {
             @RequestParam Optional<Integer> page,
             Model model) {
         int currentPage = page.orElse(1);
-        Pageable pageable = PageRequest.of(currentPage - 1, 5);
+        Pageable pageable = PageRequest.of(currentPage - 1, 6);
 
         Page<Book> allBooks;
         if (filter != null && !filter.isEmpty()) {
@@ -53,8 +57,9 @@ public class BookController {
 
         return "library";
     }
+
     @GetMapping("/create")
-    public String saveBook(){
+    public String saveBook() {
         return "book-add";
     }
 
@@ -63,15 +68,18 @@ public class BookController {
                            @RequestParam("title") String title,
                            @RequestParam("author") String author,
                            @RequestParam("year") int year) throws IOException {
-        Author newAuthor = new Author();
-        newAuthor.setName(author);
-
+        Optional<Author> authorOfBook = authorService.getAuthorByName(author);
+        if (!authorOfBook.isPresent()) {
+            Author author1 = new Author();
+            author1.setName(author.trim());
+            authorOfBook = Optional.of(author1);
+        }
         Book book = new Book();
         book.setTitle(title);
         book.setYear(year);
 
-        newAuthor.addBook(book);
-        bookService.saveBook(book,file);
+        authorOfBook.get().addBook(book);
+        bookService.saveBook(book, file);
         return "redirect:/api/v1/library";
     }
 }

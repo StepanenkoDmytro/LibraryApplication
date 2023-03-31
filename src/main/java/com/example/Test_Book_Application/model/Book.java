@@ -25,16 +25,16 @@ public class Book {
     @JoinColumn(name = "author_id")
     private Author author;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "book")
-    private List<Image> images;
+    @OneToOne(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+    private Image image;
 
-    public void addImageToBook(Image image){
-        if(images == null){
-            images = new ArrayList<>();
-        }
-        images.add(image);
-        image.setBook(this);
-    }
+//    public void addImageToBook(Image image){
+//        if(images == null){
+//            images = new ArrayList<>();
+//        }
+//        images.add(image);
+//        image.setBook(this);
+//    }
 }

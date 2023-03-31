@@ -45,7 +45,7 @@ public class BookServiceImpl implements BookService {
         Image image;
         if (file.getSize() != 0) {
             image = toImageEntity(file);
-            book.addImageToBook(image);
+            book.setImage(image);
         }
         bookRepository.save(book);
     }

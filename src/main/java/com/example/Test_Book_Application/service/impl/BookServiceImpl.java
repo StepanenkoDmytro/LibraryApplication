@@ -50,6 +50,13 @@ public class BookServiceImpl implements BookService {
         bookRepository.save(book);
     }
 
+    @Override
+    public void deleteBook(Long id) {
+        Book book = getBookById(id);
+        book.getAuthor().removeBook(book);
+        bookRepository.deleteById(id);
+    }
+
     private Image toImageEntity(MultipartFile file) throws IOException {
         Image image = new Image();
         image.setName(file.getName());
@@ -59,5 +66,4 @@ public class BookServiceImpl implements BookService {
         image.setBytes(file.getBytes());
         return image;
     }
-
 }

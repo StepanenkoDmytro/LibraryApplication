@@ -29,12 +29,4 @@ public class Book {
             fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
     private Image image;
-
-//    public void addImageToBook(Image image){
-//        if(images == null){
-//            images = new ArrayList<>();
-//        }
-//        images.add(image);
-//        image.setBook(this);
-//    }
 }

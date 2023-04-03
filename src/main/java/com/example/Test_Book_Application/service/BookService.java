@@ -13,4 +13,5 @@ public interface BookService {
     Page<Book> findByPartOfTitle(String partOfTitle,Pageable pageable);
 
     void saveBook(Book book, MultipartFile file) throws IOException;
+    void deleteBook(Long id);
 }

@@ -17,8 +17,16 @@ public class Author {
     @Column(name = "author_name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "author")
     private List<Book> books;
+
+    public Author() {
+    }
+
+    public Author(String name) {
+        this.name = name;
+    }
 
     public void addBook(Book book){
         if(books == null){

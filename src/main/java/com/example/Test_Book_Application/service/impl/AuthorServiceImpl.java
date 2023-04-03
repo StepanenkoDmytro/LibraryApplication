@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+
 @Service
 public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository authorRepository;
 
     @Autowired
-
     public AuthorServiceImpl(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
     }
@@ -28,6 +28,6 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Optional<Author> getAuthorByName(String name) {
         return authorRepository.findAuthorByName(name);
-//                .orElseThrow(() ->new AuthorFetchException(String.format("Author with name = %s not found", name)));
+//                .orElseThrow(() -> new AuthorFetchException(String.format("Author with name = %s not found", name)));
     }
 }

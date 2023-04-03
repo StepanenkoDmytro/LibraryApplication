@@ -17,32 +17,29 @@
         </form>
     </div>
 
-    <!--    <div th:each="book : ${allBooks}" class="alert alert-info mt-2">-->
-    <!--        <h5 th:text="${book.title}"/>-->
-    <!--        <h6 th:text="'Author: ' + ${book.author.getName} +  ' Year: ' + ${book.year}"/>-->
-    <!--        <div th:each="image : ${book.images}">-->
-    <!--            <img th:src="'/images/' + ${image.id}" height="150px"/>-->
-    <!--        </div>-->
-
-
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div th:each="book : ${allBooks}">
                     <div class="col">
                         <div class="card shadow-sm">
+
                             <h4 class="card-text" th:text="${book.title}"></h4>
-                            <img height="420" th:if="${book.image != null}" th:src="'/images/' + ${book.image.getId}"/>
-                            <img alt="" height="420" src="/images/non.png" th:if="${book.image == null}"/>
+
+                            <img th:if="${book.image != null}" th:src="'/images/' + ${book.image.getId}" height="420"/>
+                            <img th:unless="${book.image != null}" src="/img/non.png" height="420"/>
+
                             <div class="card-body">
+
                                 <p class="card-text" th:text="'Author:  ' + ${book.author.getName}"></p>
                                 <p class="card-text" th:text="'Year:  ' + ${book.year}"></p>
+
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <!--                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                                        <form th:action="'/api/v1/library/' + ${book.id}" method="post">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                        </form>
                                     </div>
-<!--                                    <small class="text-muted">9 mins</small>-->
                                 </div>
                             </div>
                         </div>
@@ -53,22 +50,21 @@
     </div>
 
 </div>
-
-<div th:if="${allBooks.totalPages > 0}" class="pagination"
-     th:each="pageNumber : ${pageNumbers}">
-    <a th:href="@{/api/v1/library(page=${pageNumber})}"
-       th:text=${pageNumber}
-       th:class="${pageNumber==allBooks.number + 1} ? active"></a>
-</div>
 <div align="center">
     <footer class="panel-footer">
-        Total Items: [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
-        &nbsp; &nbsp; &nbsp;
-        <br>
-        <span th:each="i : ${#numbers.sequence(1, totalPages)}">
-        <a th:href="@{/api/v1/library(page=${i}, filter=${filter != null ? filter : ''}) }">[[${i}]]</a>
-        &nbsp; &nbsp;
-    </span>
+        <div th:if="${totalItems > 0}">
+            Total Items: [[${totalItems}]] : Page [[${currentPage}]] of [[${totalPages}]]
+            &nbsp; &nbsp; &nbsp;
+            <br>
+
+            <span th:each="i : ${#numbers.sequence(1, totalPages)}">
+            <a th:href="@{/api/v1/library(page=${i}, filter=${filter != null ? filter : ''}) }">[[${i}]]</a>
+            &nbsp; &nbsp;
+            </span>
+        </div>
+        <div th:unless="${totalItems > 0}">
+            Total Items: [[0]] : Page [[0]] of [[0]]
+        </div>
     </footer>
 </div>
 

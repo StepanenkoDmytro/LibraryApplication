@@ -1,10 +1,8 @@
-package com.example.Test_Book_Application.model;
+package com.example.library.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Table(name = "books")
 @Entity

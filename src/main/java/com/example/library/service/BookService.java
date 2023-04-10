@@ -1,6 +1,6 @@
-package com.example.Test_Book_Application.service;
+package com.example.library.service;
 
-import com.example.Test_Book_Application.model.Book;
+import com.example.library.model.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;

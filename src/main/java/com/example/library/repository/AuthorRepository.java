@@ -1,6 +1,6 @@
-package com.example.Test_Book_Application.repository;
+package com.example.library.repository;
 
-import com.example.Test_Book_Application.model.Author;
+import com.example.library.model.Author;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

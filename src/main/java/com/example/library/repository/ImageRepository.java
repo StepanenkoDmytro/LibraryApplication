@@ -1,6 +1,6 @@
-package com.example.Test_Book_Application.repository;
+package com.example.library.repository;
 
-import com.example.Test_Book_Application.model.Image;
+import com.example.library.model.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ImageRepository extends JpaRepository<Image, Long> {

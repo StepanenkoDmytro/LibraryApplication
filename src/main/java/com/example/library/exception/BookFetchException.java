@@ -1,4 +1,4 @@
-package com.example.Test_Book_Application.exception;
+package com.example.library.exception;
 
 public class BookFetchException extends RuntimeException {
     public BookFetchException(String format) {

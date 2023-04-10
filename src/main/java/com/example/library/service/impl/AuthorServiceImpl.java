@@ -1,9 +1,9 @@
-package com.example.Test_Book_Application.service.impl;
+package com.example.library.service.impl;
 
-import com.example.Test_Book_Application.exception.AuthorFetchException;
-import com.example.Test_Book_Application.model.Author;
-import com.example.Test_Book_Application.repository.AuthorRepository;
-import com.example.Test_Book_Application.service.AuthorService;
+import com.example.library.exception.AuthorFetchException;
+import com.example.library.model.Author;
+import com.example.library.repository.AuthorRepository;
+import com.example.library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +28,5 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public Optional<Author> getAuthorByName(String name) {
         return authorRepository.findAuthorByName(name);
-//                .orElseThrow(() -> new AuthorFetchException(String.format("Author with name = %s not found", name)));
     }
 }

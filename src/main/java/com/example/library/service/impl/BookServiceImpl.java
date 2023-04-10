@@ -1,10 +1,10 @@
-package com.example.Test_Book_Application.service.impl;
+package com.example.library.service.impl;
 
-import com.example.Test_Book_Application.exception.BookFetchException;
-import com.example.Test_Book_Application.model.Book;
-import com.example.Test_Book_Application.model.Image;
-import com.example.Test_Book_Application.repository.BookRepository;
-import com.example.Test_Book_Application.service.BookService;
+import com.example.library.exception.BookFetchException;
+import com.example.library.model.Book;
+import com.example.library.model.Image;
+import com.example.library.repository.BookRepository;
+import com.example.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

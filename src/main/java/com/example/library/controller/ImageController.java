@@ -1,8 +1,8 @@
-package com.example.Test_Book_Application.controller;
+package com.example.library.controller;
 
-import com.example.Test_Book_Application.exception.ImageNotFoundException;
-import com.example.Test_Book_Application.model.Image;
-import com.example.Test_Book_Application.repository.ImageRepository;
+import com.example.library.exception.ImageNotFoundException;
+import com.example.library.model.Image;
+import com.example.library.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;

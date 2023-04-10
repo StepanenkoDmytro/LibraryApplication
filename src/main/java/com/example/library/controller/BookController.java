@@ -1,9 +1,9 @@
-package com.example.Test_Book_Application.controller;
+package com.example.library.controller;
 
-import com.example.Test_Book_Application.model.Author;
-import com.example.Test_Book_Application.model.Book;
-import com.example.Test_Book_Application.service.AuthorService;
-import com.example.Test_Book_Application.service.BookService;
+import com.example.library.model.Author;
+import com.example.library.model.Book;
+import com.example.library.service.AuthorService;
+import com.example.library.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

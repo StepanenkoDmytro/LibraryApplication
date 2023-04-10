@@ -1,4 +1,4 @@
-package com.example.Test_Book_Application;
+package com.example.library;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

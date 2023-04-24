@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+
+  api-server:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    restart: on-failure:10
+
+  db:
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    ports:
+      - '3308:3306'
+
